@@ -1,5 +1,5 @@
 // =============================================================
-// Used Activity 16 as a starting point
+// Used Activity 9 as a starting point
 // =============================================================
 
 // =============================================================
@@ -11,6 +11,9 @@ var app = express();
 
 // added PORT to either be assigned by HEROKU or default to 8080
 var PORT = process.env.PORT || 8080;
+
+// Requiring the models for syncing
+var db = require("./models");
 
 // added the ./ static to allow the image to show
 app.use(express.static("./"));
@@ -32,10 +35,14 @@ var routes = require("./controllers/burgers_controller.js");
 // set express to use the controller
 app.use(routes);
 
-// Start the server so that it can begin listening to client requests.
-app.listen(PORT, function() {
+// Syncing the sequelize models and then start the Express app
+// =============================================================
+db.sequelize.sync({ force: false }).then(function() {
   
-  // Log (server-side) when the  server has started
-  console.log("Server listening on: http://localhost:" + PORT);
+  app.listen(PORT, function() {
+    
+    console.log("App listening on PORT " + PORT);
+  
+  });
 
 });
