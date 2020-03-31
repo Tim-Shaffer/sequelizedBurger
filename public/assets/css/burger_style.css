@@ -1,0 +1,62 @@
+/* background color for the entire page */
+body {
+    background-color: rgb(196, 233, 255);
+}
+
+/* consistent spacing for each row */
+.row {
+    margin: 2.5em;
+}
+
+/* center the heading text and image */
+#top-row {
+    text-align: center;
+}
+
+/* size the image */
+img {
+    width: 35%;
+
+}
+
+/* center the button within the form */
+#burger-button {
+    text-align: center;
+}
+
+/* align the burgers yet to be eaten to the left side */
+#to-be-eaten {
+    text-align: left;
+}
+
+/* align the burgers already eaten to the right side */
+#eaten {
+    text-align: right;
+}
+
+/* make the burger text entry box fill the entire division */
+#burger {
+    width: 100%;
+}
+
+/* remove the bullet from the list items  */
+/* add spacing and consistent font styling */
+li {
+    list-style-type: none;
+    padding: .2em;
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* remove the border on the devour it button */
+.devBurger {
+    border: 0;
+}
+
+/* styling to make the instructions stand out */
+#instructions {
+    font-style: italic;
+    font-weight: bold;
+    font-size: large;
+    font-family: 'Palatino Linotype';
+}

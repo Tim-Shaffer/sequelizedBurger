@@ -1,0 +1,13 @@
+{{!-- burgers will be items in an un-ordered list --}}
+<li>
+
+	{{id}}.  {{burger_name}}
+
+	{{!-- display the button for the burgers where the devoured column is false --}}
+	{{#unless devoured}}
+
+		<button data-id="{{id}}" class="devBurger btn-primary">Devour It!</button>
+
+	{{/unless}}
+	
+</li>
