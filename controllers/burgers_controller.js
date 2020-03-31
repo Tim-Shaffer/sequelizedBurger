@@ -1,73 +1,70 @@
 // =============================================================
-// Used Activity 16 as a starting point
+// Used Activity 9 as a starting point
 // =============================================================
 
 // =============================================================
 // Dependencies
 // =============================================================
-var express = require("express");
-var Burger = require("../models/burger.js");
+// var express = require("express");
+
+// Require the models
+var db = require("../models");
 
 // set a router variable to use the Router method of the express package
-var router = express.Router();
+// var router = express.Router();
 
 // establish the router get method to call the Burger object SelectAll method 
-router.get("/", function(req, res) {
+module.exports = function(app) {
 
-    Burger.selectAll(function(data) {
-      
-      // create an Object to hold all the returned rows
-      var hbsObject = {
-        burgers: data
-      };
+  app.get("/", function(req, res) {
 
-      // call the index handlebar to render the selected Object 
-      res.render("index", hbsObject);
-    
+
+    db.sequelizedBurger.findAll({}).then(function(dbBurger) {
+
+      console.log("within the get route");
+
+        // call the index handlebar to render the selected Object 
+        res.render("index", dbBurger);
+
     });
 
-});
+  });
+
+  // establish the router post method to call the sequelizedBurger object insertOne method 
+  app.post("/", function(req, res) {
+
+    db.sequelizedBurger.create({
+      burger_name: req.body.burger_name
+    }).then(function(dbBurger) {
+
+      // respond to the posting route with the ID of the new burger
+      res.json(dbBurger);
+
+    });
+
+  });
+
+  // establish the router put method to call the sequelizedBurger object updateOne method  
+  app.put("/:id", function(req, res) {
+
+    // create a variable to hold the condition statement to be passed
+    var condition = "id = " + req.params.id;
+
+    db.sequelizedBurger.update({
+
+        devoured: req.body.devoured
+
+    }, {
+
+      where: {
+        id: condition
+      }
+    })
+      .then(function(dbBurger) {
+        res.status(200).end();
+      });
+
+  });
+
+};
   
-// establish the router post method to call the Burger object insertOne method 
-router.post("/", function(req, res) {
-
-  Burger.insertOne([
-    "burger_name"
-    ], [
-      req.body.burger_name
-    ], function(result) {
-
-    // respond to the posting route with the ID of the new burger
-    res.json({ id: result.insertId });
-
-  });
-
-});
-
-// establish the router put method to call the Burger object updateOne method  
-router.put("/:id", function(req, res) {
-
-  // create a variable to hold the condition statement to be passed
-  var condition = "id = " + req.params.id;
-
-  Burger.updateOne({
-
-      devoured: req.body.devoured
-
-  }, condition, function(result) {
-
-    if (result.changedRows == 0) {
-
-      // If no rows were changed, then the ID must not exist, so respond with a 404 "Not Found" status code and end the call
-      return res.status(404).end();
-
-    } else {
-
-      // respond with a 200 "Success" status code and end the call 
-      res.status(200).end();
-    }
-  });
-});
-
-// export the router object to be available for use by other files
-module.exports = router;

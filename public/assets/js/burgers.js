@@ -2,7 +2,7 @@
 // Used Activity 16 as a starting point
 // =============================================================
 // Wait to attach the handlers until the DOM is fully loaded.
-$(function() {
+$(document).ready(function() {
 
   // event handler for when a "devour it" button is clicked
   $(".devBurger").on("click", function(event) {

@@ -2,7 +2,7 @@
 // Used Activity 9 as a starting point
 // =============================================================
 module.exports = function(sequelize, DataTypes) {
-    var Burger = sequelize.define("SequelizedBurger", {
+    var sequelizedBurger = sequelize.define("sequelizedBurger", {
         burger_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -14,10 +14,10 @@ module.exports = function(sequelize, DataTypes) {
       devoured: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
-        }
+        },
     });
 
-    return Burger;
+    return sequelizedBurger;
 
 };
   

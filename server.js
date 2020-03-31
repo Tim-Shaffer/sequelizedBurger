@@ -30,10 +30,7 @@ app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // set the variable for the route controller file
-var routes = require("./controllers/burgers_controller.js");
-
-// set express to use the controller
-app.use(routes);
+require("./controllers/burgers_controller.js")(app);
 
 // Syncing the sequelize models and then start the Express app
 // =============================================================
