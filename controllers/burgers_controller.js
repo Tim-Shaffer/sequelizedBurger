@@ -55,13 +55,11 @@ module.exports = function(app) {
     var condition = "id = " + req.params.id;
 
     db.sequelizedBurger.update({
-
-        devoured: req.body.devoured
-
+          devoured: req.body.devoured
     }, {
 
       where: {
-        id: condition
+        id: req.params.id
       }
     })
       .then(function(dbBurger) {
