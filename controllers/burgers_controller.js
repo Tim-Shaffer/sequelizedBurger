@@ -21,10 +21,14 @@ module.exports = function(app) {
 
     db.sequelizedBurger.findAll({}).then(function(dbBurger) {
 
-      console.log("within the get route");
+      // create an Object to hold all the returned rows
+      var hbsObject = {
+        burgers: dbBurger
+      };
 
         // call the index handlebar to render the selected Object 
-        res.render("index", dbBurger);
+        res.render("index", hbsObject);
+        // res.json(hbsObject);
 
     });
 
