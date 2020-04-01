@@ -1,107 +1,23 @@
-{{!-- Added a container div for the body contents --}}
-<div class="container">
-
-  {{!-- Separate the contents into rows --}}
-  <div class="row" id="top-row">
-
-    <div class="col">
-      
-      <h2>Welcome to Good Burger, Home of the Good Burger</h2> 
-
-      <h3>May I take your Order?</h3>
-
-      <img class="img-fluid img-responsive" src="../public/assets/img/Good_Burger.jpg" alt="Good Burger">
-
-    </div>
-    {{!-- end of col div --}}
-
-  </div>
-  {{!-- end of top-row div --}}
-
-  {{!-- second row displays the burgers - eaten or not --}}
+  {{!-- Display buttons to either add Customers or OrderBurgers --}}
   <div class="row">
 
     <div class="col-2"></div>
 
-    <div class="col-4" id="to-be-eaten">
+    <div class="col-4" id="addCustomer">
 
-      <h4>Burgers To Eat:</h4>
-
-      <br>
-    
-      <ul>
-        {{#each burgers}}
-          {{#unless devoured}}
-            {{> burgers/burger-block }}
-            
-          {{/unless}}
-        {{/each}}
-      </ul>
+      <a class="btn btn-light" href="/customer">Manage Customers</a>
 
     </div>
-    {{!-- end of to-be-eaten col div --}}
+    {{!-- end of addCustomer col div --}}
     
-    <div class="col-4" id="eaten">
+    <div class="col-4" id="orderBurgers">
 
-      <h4>Burgers Already Eaten:</h4>
-
-      <br>
-
-      <ul>
-        {{#each burgers}}
-          {{#if devoured}}
-            {{> burgers/burger-block }}
-          {{/if}}
-        {{/each}}
-      </ul>
-    
-    </div>
-    {{!-- end of eaten col div --}}
+      <a class="btn btn-light" href="/burger">Order Burgers</a>
+    {{!-- end of orderBurgers col div --}}
 
     <div class="col-2"></div>
 
   </div>
-  {{!-- end of burger row div --}}
+  {{!-- end of row div --}}
 
-  {{!-- third row displays the form to add a new burger to be eaten --}}
-  <div class="row">
-
-    <div class="col"></div>
-    
-    <div calss="col">
-
-      <form class="create-form">
-
-        <div class="form-group">
-
-          <div id="burger-label">
-          
-            {{!-- <label for="burger">Burger Name:</label> --}}
-
-          </div>
-
-          <input type="text" id="burger" name="burger_name">
-
-        </div>
-
-        <p id="instructions"> Enter a burger that you would like to eat and Click the "Submit" button </p>
-        
-        <br>
-
-        <div id="burger-button">
-          
-          <button type="submit" class="btn btn-lg btn-success button-space">Submit</button>
-
-        </div>
-
-      </form>
-
-    </div>
-    {{!-- end of form col div --}}
-    
-    <div class="col"></div>
-
-  </div>
-  {{!-- end of form row div --}}
-
-</div>
+ 

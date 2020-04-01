@@ -24,8 +24,31 @@
     </head>
 
 	<body>
+
+        {{!-- Added a container div for the body contents --}}
+        <div class="container">
+
+            {{!-- Separate the contents into rows --}}
+            <div class="row" id="top-row">
+
+                <div class="col">
+      
+                    <h2>Welcome to Good Burger, Home of the Good Burger</h2> 
+
+                    <h3>May I take your Order?</h3>
+
+                    <img class="img-fluid img-responsive" src="../public/assets/img/Good_Burger.jpg" alt="Good Burger">
+
+                </div>
+                {{!-- end of col div --}}
+
+            </div>
+            {{!-- end of top-row div --}}
   
 		    {{{ body }}}
+
+        </div>
+        {{!-- end of the container div --}}
 	
     </body>
 

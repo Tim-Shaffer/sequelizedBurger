@@ -60,3 +60,11 @@ li {
     font-size: large;
     font-family: 'Palatino Linotype';
 }
+
+#orderBurgers {
+    text-align: right;
+}
+
+#addCustomer {
+    text-align: left;
+}
