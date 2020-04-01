@@ -18,6 +18,12 @@ module.exports = function(app) {
 
   app.get("/", function(req, res) {
 
+    // call the index handlebar to render the selected Object 
+    res.render("index");
+
+  });
+
+  app.get("/burger", function(req, res) {
 
     db.sequelizedBurger.findAll({}).then(function(dbBurger) {
 
@@ -27,8 +33,24 @@ module.exports = function(app) {
       };
 
         // call the index handlebar to render the selected Object 
-        res.render("index", hbsObject);
+        res.render("cust_burger", hbsObject);
         // res.json(hbsObject);
+
+    });
+
+  });
+
+  app.get("/customer", function(req, res) {
+
+    db.Customer.findAll({}).then(function(dbCustomer) {
+
+      // create an Object to hold all the returned rows
+      var hbsObject = {
+        customers: dbCustomer
+      };
+
+        // call the index handlebar to render the selected Object 
+        res.render("customer", hbsObject);
 
     });
 
@@ -64,6 +86,33 @@ module.exports = function(app) {
       });
 
   });
+
+   // GET route for getting all of the burgers
+   app.get("/api/burgers", function(req, res) {
+    var query = {};
+    if (req.query.customer_id) {
+      query.CustomerId = req.query.customer_id;
+    }
+    
+    db.sequelizedBurger.findAll({
+      where: query,
+      include: [db.Customer]
+    }).then(function(dbBurger) {
+      res.json(dbBurger);
+    });
+
+  });
+
+     // GET route for getting all of the customers
+     app.get("/api/customers", function(req, res) {
+      
+      db.Customer.findAll({
+        include: [db.sequelizedBurger]
+      }).then(function(dbCustomer) {
+        res.json(dbCustomer);
+      });
+      
+    });
 
 };
   
