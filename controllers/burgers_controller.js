@@ -51,9 +51,6 @@ module.exports = function(app) {
   // establish the router put method to call the sequelizedBurger object updateOne method  
   app.put("/:id", function(req, res) {
 
-    // create a variable to hold the condition statement to be passed
-    var condition = "id = " + req.params.id;
-
     db.sequelizedBurger.update({
           devoured: req.body.devoured
     }, {
