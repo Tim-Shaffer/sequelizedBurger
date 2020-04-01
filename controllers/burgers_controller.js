@@ -16,6 +16,7 @@ var db = require("../models");
 // establish the router get method to call the Burger object SelectAll method 
 module.exports = function(app) {
 
+  // default for the index to then select customer or burger viewpoint
   app.get("/", function(req, res) {
 
     // call the index handlebar to render the selected Object 
@@ -23,9 +24,10 @@ module.exports = function(app) {
 
   });
 
+  // default view for getting all burgers
   app.get("/burger", function(req, res) {
 
-    db.sequelizedBurger.findAll({}).then(function(dbBurger) {
+    db.sequelizedBurger.findAll({include: [db.Customer]}).then(function(dbBurger) {
 
       // create an Object to hold all the returned rows
       var hbsObject = {
@@ -40,6 +42,7 @@ module.exports = function(app) {
 
   });
 
+  // default view for getting all customers
   app.get("/customer", function(req, res) {
 
     db.Customer.findAll({}).then(function(dbCustomer) {
