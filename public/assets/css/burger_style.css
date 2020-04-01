@@ -68,3 +68,13 @@ li {
 #addCustomer {
     text-align: left;
 }
+
+/* make the burger text entry box fill the entire division */
+#customer {
+    width: 100%;
+}
+
+/* center the button within the form */
+#customer-button {
+    text-align: center;
+}

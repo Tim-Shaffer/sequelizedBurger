@@ -45,7 +45,7 @@ module.exports = function(app) {
   // default view for getting all customers
   app.get("/customer", function(req, res) {
 
-    db.Customer.findAll({}).then(function(dbCustomer) {
+    db.Customer.findAll({include: [db.sequelizedBurger]}).then(function(dbCustomer) {
 
       // create an Object to hold all the returned rows
       var hbsObject = {
@@ -54,6 +54,7 @@ module.exports = function(app) {
 
         // call the index handlebar to render the selected Object 
         res.render("customer", hbsObject);
+        // res.json(hbsObject);
 
     });
 
@@ -87,6 +88,20 @@ module.exports = function(app) {
       .then(function(dbBurger) {
         res.status(200).end();
       });
+
+  });
+
+  // establish the router post method to call the Customer object insertOne method 
+  app.post("/customer", function(req, res) {
+
+    db.Customer.create({
+      cust_name: req.body.cust_name
+    }).then(function(dbCustomer) {
+
+      // respond to the posting route with the ID of the new Customer
+      res.json(dbCustomer);
+
+    });
 
   });
 
