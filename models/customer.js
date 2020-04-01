@@ -8,7 +8,8 @@ module.exports = function(sequelize, DataTypes) {
             len: [1,255]
             }
         }
-
+    }, {
+      freezeTableName: true // Model tableName will be the same as the model name
     });
 
     Customer.associate = function(models) {

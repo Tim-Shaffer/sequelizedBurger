@@ -15,6 +15,8 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.BOOLEAN,
         defaultValue: false
         },
+    }, {
+      freezeTableName: true // Model tableName will be the same as the model name
     });
 
     sequelizedBurger.associate = function(models) {
