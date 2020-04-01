@@ -23,7 +23,8 @@ $(document).ready(function() {
       function() {
         
         // Reload the page to get the updated list
-        location.assign("/");
+        //location.assign("/");
+        location.assign("/burger");
       }
 
     );
