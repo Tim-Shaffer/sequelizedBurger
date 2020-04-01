@@ -17,6 +17,16 @@ module.exports = function(sequelize, DataTypes) {
         },
     });
 
+    sequelizedBurger.associate = function(models) {
+        // A Burger belongs to a Customer
+        // A Burger can't be created without a Customer due to the foreign key constraint
+        sequelizedBurger.belongsTo(models.Customer, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
+      };
+
     return sequelizedBurger;
 
 };
