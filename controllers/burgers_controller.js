@@ -49,25 +49,28 @@ module.exports = function(app) {
 
   });
 
-  // default view for getting all customers
-  app.get("/customer", function(req, res) {
+  // default view for getting all burgers by id
+  app.get("/burger/:id", function(req, res) {
 
-    db.Customer.findAll(
-      { include: [db.sequelizedBurger],
+    db.sequelizedBurger.findAll(
+      { where: {
+        CustomerId: req.params.id
+        },
+        include: [db.Customer],
         order: [
-          ['cust_name', 'ASC'],
+          ['burger_name', 'ASC'],
           ['id', 'DESC'],
         ],
       })
-      .then(function(dbCustomer) {
+      .then(function(dbBurger) {
 
       // create an Object to hold all the returned rows
       var hbsObject = {
-        customers: dbCustomer
+        burgers: dbBurger
       };
 
         // call the index handlebar to render the selected Object 
-        res.render("customer", hbsObject);
+        res.render("cust_burger", hbsObject);
         // res.json(hbsObject);
 
     });
@@ -105,20 +108,6 @@ module.exports = function(app) {
 
   });
 
-  // establish the router post method to call the Customer object insertOne method 
-  app.post("/customer", function(req, res) {
-
-    db.Customer.create({
-      cust_name: req.body.cust_name
-    }).then(function(dbCustomer) {
-
-      // respond to the posting route with the ID of the new Customer
-      res.json(dbCustomer);
-
-    });
-
-  });
-
    // GET route for getting all of the burgers
    app.get("/api/burgers", function(req, res) {
     var query = {};
@@ -134,17 +123,6 @@ module.exports = function(app) {
     });
 
   });
-
-     // GET route for getting all of the customers
-     app.get("/api/customers", function(req, res) {
-      
-      db.Customer.findAll({
-        include: [db.sequelizedBurger]
-      }).then(function(dbCustomer) {
-        res.json(dbCustomer);
-      });
-      
-    });
 
 };
   
