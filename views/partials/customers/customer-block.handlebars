@@ -1,6 +1,16 @@
 
-<p>
-    {{this.id}}.  {{this.cust_name}} 
+<tr>
+    <td> {{this.cust_name}} </td>
 
-</p>
+    {{#if this.sequelizedBurgers}} 
+        <td>{{this.sequelizedBurgers.length}}</td>
+    {{else}}
+      <td>0</td>
+    {{/if}}
+
+    <td><a href="/burger?customer_id={{this.id}}">Order</a></td>
+
+    <td><a style='cursor:pointer;color:red' class='delete-customer'>Delete Customer</a></td>
+    
+</tr>
 

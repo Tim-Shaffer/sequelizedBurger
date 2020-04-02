@@ -52,7 +52,14 @@ module.exports = function(app) {
   // default view for getting all customers
   app.get("/customer", function(req, res) {
 
-    db.Customer.findAll({include: [db.sequelizedBurger]}).then(function(dbCustomer) {
+    db.Customer.findAll(
+      { include: [db.sequelizedBurger],
+        order: [
+          ['cust_name', 'ASC'],
+          ['id', 'DESC'],
+        ],
+      })
+      .then(function(dbCustomer) {
 
       // create an Object to hold all the returned rows
       var hbsObject = {
