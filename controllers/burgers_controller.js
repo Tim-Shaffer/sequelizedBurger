@@ -27,7 +27,14 @@ module.exports = function(app) {
   // default view for getting all burgers
   app.get("/burger", function(req, res) {
 
-    db.sequelizedBurger.findAll({include: [db.Customer]}).then(function(dbBurger) {
+    db.sequelizedBurger.findAll(
+      {include: [db.Customer],
+        order: [
+          ['burger_name', 'ASC'],
+          ['id', 'DESC'],
+        ],
+      })
+      .then(function(dbBurger) {
 
       // create an Object to hold all the returned rows
       var hbsObject = {
