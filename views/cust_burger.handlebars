@@ -15,7 +15,25 @@
 
           {{#unless devoured}}
 
-            {{> burgers/burger-block }}
+            {{!-- {{> burgers/burger-block }} --}}
+            <li>
+
+            {{this.burger_name}} 
+
+            {{#unless this.devoured}} for {{/unless}}
+
+            {{#if this.devoured}} by {{/if}}
+
+            {{this.Customer.cust_name}}
+
+            {{!-- display the button for the burgers where the devoured column is false --}}
+            {{#unless this.devoured}}
+
+              <button data-id="{{this.id}}" class="devBurger btn-primary">Devour It!</button>
+
+            {{/unless}}
+	
+            </li>
             
           {{/unless}}
 
@@ -38,7 +56,25 @@
 
           {{#if devoured}}
 
-            {{> burgers/burger-block }}
+            {{!-- {{> burgers/burger-block }} --}}
+            <li>
+
+            {{this.burger_name}} 
+
+            {{#unless this.devoured}} for {{/unless}}
+
+            {{#if this.devoured}} by {{/if}}
+
+            {{this.Customer.cust_name}}
+
+            {{!-- display the button for the burgers where the devoured column is false --}}
+            {{#unless this.devoured}}
+
+              <button data-id="{{this.id}}" class="devBurger btn-primary">Devour It!</button>
+
+            {{/unless}}
+	
+            </li>
 
           {{/if}}
 
