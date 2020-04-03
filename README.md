@@ -15,7 +15,7 @@ This project updates the **Burger** project to use `sequelize` as well as adding
 ## Contents
 * [Deployment](https://github.com/Tim-Shaffer/sequelizedBurger#deployment)
 * [Tech Used](https://github.com/Tim-Shaffer/sequelizedBurger#tech-used)
-* [MVC Directory Structure](https://github.com/Tim-Shaffer/sequelizedBurgerr#mvc-directory-structure)
+* [MVC Directory Structure](https://github.com/Tim-Shaffer/sequelizedBurger#mvc-directory-structure)
 * [Instructions](https://github.com/Tim-Shaffer/sequelizedBurger#instructions)
 
 # Deployment
