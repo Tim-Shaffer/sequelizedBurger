@@ -16,7 +16,6 @@ body {
 /* size the image */
 img {
     width: 35%;
-
 }
 
 /* center the button within the form */
@@ -61,12 +60,24 @@ li {
     font-family: 'Palatino Linotype';
 }
 
+/* align the order burgers button to the left side on the index and other pages*/
 #orderBurgers {
+    text-align: left;
+}
+
+/* align the Manage Customers button to the right side on the index */
+#addCustomerMain {
     text-align: right;
 }
 
-#addCustomer {
+/* align the Manage Customers button to the right side on the cust_burger */
+#addCustomerBurger {
     text-align: left;
+}
+
+/* align the Main Menu button to the right side */
+#mainButton {
+    text-align: right;   
 }
 
 /* make the customer text entry box fill the entire division */
@@ -79,9 +90,6 @@ li {
     text-align: center;
 }
 
-/* #customerList {
-    width: 100%;    
-} */
 
 .table th, .table td {
     padding: 0em;
