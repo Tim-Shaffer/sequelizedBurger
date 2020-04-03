@@ -1,3 +1,4 @@
+// export the constructor to make available in other files
 module.exports = function(sequelize, DataTypes) {
     var Customer = sequelize.define("Customer", {
         cust_name: {
@@ -14,8 +15,9 @@ module.exports = function(sequelize, DataTypes) {
 
     Customer.associate = function(models) {
         // Associating Customer with Burger
-        // When a Customer is deleted, also delete any associated Burgers
+        // A customer can have many burger rows
         Customer.hasMany(models.Burger, {
+          // When a Customer is deleted, also delete any associated Burgers
           onDelete: "cascade"
         });
     };

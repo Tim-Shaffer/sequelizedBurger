@@ -1,6 +1,4 @@
-// =============================================================
-// Used Activity 9 as a starting point
-// =============================================================
+// export the constructor to make available in other files
 module.exports = function(sequelize, DataTypes) {
     var Burger = sequelize.define("Burger", {
         burger_name: {
@@ -26,6 +24,7 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: {
             allowNull: false
           },
+          // force the burger row to be deleted when a customer row is deleted.
           onDelete: 'CASCADE'
         });
       };
