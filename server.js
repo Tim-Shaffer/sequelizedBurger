@@ -1,8 +1,4 @@
 // =============================================================
-// Used Activity 9 as a starting point
-// =============================================================
-
-// =============================================================
 // Dependencies
 // =============================================================
 var express = require("express");
@@ -29,7 +25,7 @@ app.use(express.json());
 app.engine("handlebars", handlebars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// set the variable for the route controller file
+// require the controller files
 require("./controllers/burgers_controller.js")(app);
 require("./controllers/customers_controller.js")(app);
 
