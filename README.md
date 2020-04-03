@@ -1,9 +1,11 @@
-# burger
+# Sequelized Burger
 The purpose of this project was to highlight a Full Stack application setup using the **MVC** design pattern.  
 
-* The **MODEL** establishes the connection to the database using *Object Relational Mapping* via files in the `config` folder.
+This project updates the **Burger** project to use `sequelize` as well as adding some additional functionality with associating customers to the flow.
+
+* The **MODEL** establishes the the database tables using *Sequelize* via files in the `models` folder.
 * The **VIEW** is handled using *Express Handlebars* to present the data from the database based on files in the `views` folder.
-* The **CONTROLLER** determines the routing of the information, `GET`, `POST`, or `PUT`, based on the file in the `controllers` folder. 
+* The **CONTROLLER** determines the routing of the information, `GET`, `POST`, or `PUT`, based on the files in the `controllers` folder. 
 
 
 # Author 
@@ -11,13 +13,13 @@ The purpose of this project was to highlight a Full Stack application setup usin
 
 
 ## Contents
-* [Deployment](https://github.com/Tim-Shaffer/burger#deployment)
-* [Tech Used](https://github.com/Tim-Shaffer/burger#tech-used)
-* [MVC Directory Structure](https://github.com/Tim-Shaffer/burger#mvc-directory-structure)
-* [Instructions](https://github.com/Tim-Shaffer/burger#instructions)
+* [Deployment](https://github.com/Tim-Shaffer/sequelizedBurger#deployment)
+* [Tech Used](https://github.com/Tim-Shaffer/sequelizedBurger#tech-used)
+* [MVC Directory Structure](https://github.com/Tim-Shaffer/sequelizedBurgerr#mvc-directory-structure)
+* [Instructions](https://github.com/Tim-Shaffer/sequelizedBurger#instructions)
 
 # Deployment
-The app is deployed to **HEROKU** at the following link:  https://tim-shaffer-burger1.herokuapp.com/
+The app is deployed to **HEROKU** at the following link:  https://tim-shaffer-burger2.herokuapp.com/
 
 ## Tech Used
 * JavaScript
@@ -31,6 +33,7 @@ The app is deployed to **HEROKU** at the following link:  https://tim-shaffer-bu
         * set
         * handlebars
     * mysql
+    * sequelize
 * HTML 
 * CSS
 * Bootstrap
@@ -48,26 +51,38 @@ The app is deployed to **HEROKU** at the following link:  https://tim-shaffer-bu
 ### MVC Directory Structure
 
 ```bash
-├── burger
+├── sequelizedBurger
 │   ├── config
-│   │   ├── connection.js
-│   │   └── orm.js
+│   │   └── config.js
 │   ├── controllers
-│   │   └── burgers_controller.js
+│   │   ├── burgers_controller.js
+│   │   └── customers_controller.js
 │   ├── db
-│   │   ├── schema.sql
-│   │   └── seeds.sql
+│   │   └── schema.sql
 │   ├── models
-│   │   └── burger.js
+│   │   ├── burger.js
+│   │   ├── customer.js
+│   │   └── index.js
 │   ├── public
 │   │   └── assets
 │   |       ├── css
-│   │       |   └── burgers_controller.js
+│   │       |   └── burger_style.css
 │   |       ├── img
 │   │       |   └── Good_Burger.jpg
 │   |       └── js
-│   │           └── burgers.js
+│   │           ├── burgers.js
+│   │           └── customers.js
 │   └── views
+│       ├─── layouts
+│       |       └── main.handlebars
+│       ├─── partials
+│       |       ├─── burgers
+│       |       |    └── burger-block.handlebars
+│       |       └─── customers
+│       |            └── customer-block.handlebars
+|       ├── cust_burger.handlebars
+|       ├── customer.handlebars
+│       └── index.handlebars
 ├── .gitignore
 ├── package.json
 ├── README.md
