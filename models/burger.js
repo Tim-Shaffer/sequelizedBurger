@@ -2,7 +2,7 @@
 // Used Activity 9 as a starting point
 // =============================================================
 module.exports = function(sequelize, DataTypes) {
-    var sequelizedBurger = sequelize.define("sequelizedBurger", {
+    var Burger = sequelize.define("Burger", {
         burger_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -19,17 +19,17 @@ module.exports = function(sequelize, DataTypes) {
       freezeTableName: true // Model tableName will be the same as the model name
     });
 
-    sequelizedBurger.associate = function(models) {
+    Burger.associate = function(models) {
         // A Burger belongs to a Customer
         // A Burger can't be created without a Customer due to the foreign key constraint
-        sequelizedBurger.belongsTo(models.Customer, {
+        Burger.belongsTo(models.Customer, {
           foreignKey: {
             allowNull: false
           }
         });
       };
 
-    return sequelizedBurger;
+    return Burger;
 
 };
   

@@ -27,7 +27,7 @@ module.exports = function(app) {
   // default view for getting all burgers
   app.get("/burger", function(req, res) {
 
-    db.sequelizedBurger.findAll(
+    db.Burger.findAll(
       {include: [db.Customer],
         order: [
           ['burger_name', 'ASC'],
@@ -52,7 +52,7 @@ module.exports = function(app) {
   // default view for getting all burgers by id
   app.get("/burger/:id", function(req, res) {
 
-    db.sequelizedBurger.findAll(
+    db.Burger.findAll(
       { where: {
         CustomerId: req.params.id
         },
@@ -77,10 +77,10 @@ module.exports = function(app) {
 
   });
 
-  // establish the router post method to call the sequelizedBurger object insertOne method 
+  // establish the router post method to call the Burger object insertOne method 
   app.post("/", function(req, res) {
 
-    db.sequelizedBurger.create({
+    db.Burger.create({
       burger_name: req.body.burger_name
     }).then(function(dbBurger) {
 
@@ -91,10 +91,10 @@ module.exports = function(app) {
 
   });
 
-  // establish the router put method to call the sequelizedBurger object updateOne method  
+  // establish the router put method to call the Burger object updateOne method  
   app.put("/:id", function(req, res) {
 
-    db.sequelizedBurger.update({
+    db.Burger.update({
           devoured: req.body.devoured
     }, {
 
@@ -115,7 +115,7 @@ module.exports = function(app) {
       query.CustomerId = req.query.customer_id;
     }
     
-    db.sequelizedBurger.findAll({
+    db.Burger.findAll({
       where: query,
       include: [db.Customer]
     }).then(function(dbBurger) {

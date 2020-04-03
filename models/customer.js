@@ -13,9 +13,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Customer.associate = function(models) {
-        // Associating Customer with sequelizedBurger
-        // When a Customer is deleted, also delete any associated sequelizedBurgers
-        Customer.hasMany(models.sequelizedBurger, {
+        // Associating Customer with Burger
+        // When a Customer is deleted, also delete any associated Burgers
+        Customer.hasMany(models.Burger, {
           onDelete: "cascade"
         });
       };

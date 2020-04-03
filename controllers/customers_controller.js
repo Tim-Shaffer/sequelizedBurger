@@ -12,7 +12,7 @@ module.exports = function(app) {
   app.get("/customer", function(req, res) {
 
     db.Customer.findAll(
-      { include: [db.sequelizedBurger],
+      { include: [db.Burger],
         order: [
           ['cust_name', 'ASC'],
           ['id', 'DESC'],
@@ -51,7 +51,7 @@ module.exports = function(app) {
      app.get("/api/customers", function(req, res) {
       
       db.Customer.findAll({
-        include: [db.sequelizedBurger]
+        include: [db.Burger]
       }).then(function(dbCustomer) {
         res.json(dbCustomer);
       });
