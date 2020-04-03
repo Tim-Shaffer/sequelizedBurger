@@ -95,18 +95,15 @@ The app is deployed to **HEROKU** at the following link:  https://tim-shaffer-bu
 
     ![Screenshot for starting the app](./public/assets/img/HomePage.jpg)
 
-1. Add a Burger that you would like to eat by entering it into the textbox.
+1. From the Main Menu you can Mange Customers or Order Burgers.  However, if you try to go to Order Burgers before adding any customers, it will take you to the Manage Customers view instead.
 
-    ![Screenshot for entering a new burger](./public/assets/img/EnterBurger.jpg)
+    ![Screenshot for entering a new burger](./public/assets/img/CustomerHome.jpg)
 
-1. Click the **Submit** button and the burger will be added to the Burgers To Eat list with an associated **Devour It!** button.
+1. Add a Customer by entering it into the textbox.
+
+    ![Screenshot for entering a new burger](./public/assets/img/EnterCustomer.jpg)
+
+1. Click the **Submit** button and the Customer will be added to a Customer table along with # of burgers, a direct link to Order Burgers for that Customer, and a Delete Customer link.
 
     ![Screenshot for submitting a new burger](./public/assets/img/SubmitBurger.jpg)
 
-1. Enter more burgers to eat in the same manner.
-
-    ![Screenshot for submitting more burgers](./public/assets/img/MoreBurgers.jpg)
-    
-1. Click on a particular burgers **Devour It!** button and the burger will be updated as *devoured* and moved to the Burgers Already Eaten list.
-
-    ![Screenshot for devouring a burger](./public/assets/img/DevourBurger.jpg)
