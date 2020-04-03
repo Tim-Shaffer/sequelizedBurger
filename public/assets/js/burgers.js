@@ -1,11 +1,11 @@
-// =============================================================
-// Used Activity 16 as a starting point
-// =============================================================
 // Wait to attach the handlers until the DOM is fully loaded.
 $(document).ready(function() {
 
+  // declare variables to be used to gather customer specifics
   var customerSelect = $("#customer");
   var CustomerId;
+
+  // declare a variable for the current url so that tasks can return to the same location
   var currentURL = window.location.href;
 
   // event handler for when a "devour it" button is clicked
@@ -27,8 +27,8 @@ $(document).ready(function() {
       function() {
         
         // Reload the page to get the updated list
-        //location.assign("/");
-        location.assign(currentURL);
+        location.reload();
+
       }
 
     );
@@ -56,13 +56,17 @@ $(document).ready(function() {
         
         // Reload the page to get the updated list
         location.reload();
+
       }
 
     );
     
   });
 
-  // Getting the customers, and their posts
+// =============================================================
+// Used Activity 14 as a starting point (changed authors to customers and posts to burgers)
+// =============================================================
+  // Getting the customers, and their burgers
   getCustomers();
 
   // A function to get customers and then render our list of customers
@@ -71,7 +75,7 @@ $(document).ready(function() {
   };
 
   // Function to either render a list of customers, or if there are none, direct the user to the page
-  // to create an customer first
+  // to create a new customer first
   function renderCustomerList(data) {
 
     CustomerId = parseInt(currentURL.substring(currentURL.length - 1)) || 0 ;
@@ -82,14 +86,13 @@ $(document).ready(function() {
 
     $(".hidden").removeClass("hidden");
 
+    // create an array to populate the customer select list 
     var rowsToAdd = [];
     for (var i = 0; i < data.length; i++) {
       rowsToAdd.push(createCustomerRow(data[i]));
     };
 
     customerSelect.empty();
-    console.log(JSON.stringify(rowsToAdd));
-    console.log(customerSelect);
     customerSelect.append(rowsToAdd);
     customerSelect.val(CustomerId);
 
@@ -102,5 +105,6 @@ $(document).ready(function() {
     listOption.text(customer.cust_name);
     return listOption;
   };
+// =============================================================
 
 });

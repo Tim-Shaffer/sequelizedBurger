@@ -1,6 +1,3 @@
-// =============================================================
-// Used Activity 16 as a starting point
-// =============================================================
 // Wait to attach the handlers until the DOM is fully loaded.
 $(document).ready(function() {
 
@@ -34,9 +31,11 @@ $(document).ready(function() {
   // event handler for the click of the delete customer link
   $(".delete-customer").on("click", function(event) {
 
+    // initialize a variable with the Customer ID found in the table row attributes
     var id = $(this).parent("td").parent("tr").attr("value");
     console.log("ID:  " + id);
 
+    // Send the Delete request to the controller with the id 
     $.ajax({
       url: "/customer/" + id,
       method: "DELETE"
