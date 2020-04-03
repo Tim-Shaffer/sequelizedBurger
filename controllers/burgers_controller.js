@@ -81,7 +81,8 @@ module.exports = function(app) {
   app.post("/", function(req, res) {
 
     db.Burger.create({
-      burger_name: req.body.burger_name
+      burger_name: req.body.burger_name,
+      CustomerId: req.body.CustomerId
     }).then(function(dbBurger) {
 
       // respond to the posting route with the ID of the new burger

@@ -4,6 +4,10 @@
 // Wait to attach the handlers until the DOM is fully loaded.
 $(document).ready(function() {
 
+  var customerSelect = $("#customer");
+  var CustomerId;
+  var currentURL = window.location.href;
+
   // event handler for when a "devour it" button is clicked
   $(".devBurger").on("click", function(event) {
 
@@ -24,7 +28,7 @@ $(document).ready(function() {
         
         // Reload the page to get the updated list
         //location.assign("/");
-        location.assign("/burger");
+        location.assign(currentURL);
       }
 
     );
@@ -39,7 +43,8 @@ $(document).ready(function() {
 
     // set a variable to value a new burger
     var newBurger = {
-      burger_name: $("#burger").val().trim()
+      burger_name: $("#burger").val().trim(),
+      CustomerId: $("#customer").val()
     };
 
     // Send the POST request to the controller
@@ -57,30 +62,45 @@ $(document).ready(function() {
     
   });
 
-  // event handler for the submission of the customer form with the click of the submit button
-  $(".create-customer-form").on("submit", function(event) {
+  // Getting the customers, and their posts
+  getCustomers();
 
-    // Make sure to preventDefault on a submit event.
-    event.preventDefault();
+  // A function to get customers and then render our list of customers
+  function getCustomers() {
+    $.get("/api/customers", renderCustomerList);
+  };
 
-    // set a variable to value a new burger
-    var newCustomer = {
-      cust_name: $("#customer").val().trim()
+  // Function to either render a list of customers, or if there are none, direct the user to the page
+  // to create an customer first
+  function renderCustomerList(data) {
+
+    CustomerId = parseInt(currentURL.substring(currentURL.length - 1)) || 0 ;
+
+    if (!data.length) {
+      window.location.href = "/customer";
     };
 
-    // Send the POST request to the controller
-    $.ajax("/customer", {
-      type: "POST",
-      data: newCustomer
-    }).then(
-      function() {
-        
-        // Reload the page to get the updated list
-        location.reload();
-      }
+    $(".hidden").removeClass("hidden");
 
-    );
-    
-  });
+    var rowsToAdd = [];
+    for (var i = 0; i < data.length; i++) {
+      rowsToAdd.push(createCustomerRow(data[i]));
+    };
+
+    customerSelect.empty();
+    console.log(JSON.stringify(rowsToAdd));
+    console.log(customerSelect);
+    customerSelect.append(rowsToAdd);
+    customerSelect.val(CustomerId);
+
+  };
+
+  // Creates the customer options in the dropdown
+  function createCustomerRow(customer) {
+    var listOption = $("<option>");
+    listOption.attr("value", customer.id);
+    listOption.text(customer.cust_name);
+    return listOption;
+  };
 
 });
