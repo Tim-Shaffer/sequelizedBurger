@@ -1,15 +1,18 @@
 {{!-- burgers will be items in an un-ordered list --}}
 <li>
 
-	{{this.id}}.  {{this.burger_name}} 
+	{{this.burger_name}} 
+
 	{{#unless devoured}} for {{/unless}}
+
 	{{#if devoured}} by {{/if}}
+
 	{{this.Customer.cust_name}}
 
 	{{!-- display the button for the burgers where the devoured column is false --}}
 	{{#unless devoured}}
 
-		<button data-id="{{id}}" class="devBurger btn-primary">Devour It!</button>
+		<button data-id="{{this.id}}" class="devBurger btn-primary">Devour It!</button>
 
 	{{/unless}}
 	

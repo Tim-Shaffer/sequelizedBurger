@@ -1,11 +1,18 @@
-
+{{!-- customers will be in a table --}}
 <tr value="{{this.id}}">
+
     <td> {{this.cust_name}} </td>
 
     {{#if this.Burgers}} 
+
+        {{!-- display the number of burgers for each customer as the length of that customers burger array --}}
         <td>{{this.Burgers.length}}</td>
+
     {{else}}
+
+      {{!-- no burgers are associated so the count is '0' --}}
       <td>0</td>
+
     {{/if}}
 
     <td><a href="/burger/{{this.id}}">Order</a></td>

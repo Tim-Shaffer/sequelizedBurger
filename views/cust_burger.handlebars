@@ -10,12 +10,17 @@
       <br>
     
       <ul>
+
         {{#each burgers}}
+
           {{#unless devoured}}
+
             {{> burgers/burger-block }}
             
           {{/unless}}
+
         {{/each}}
+
       </ul>
 
     </div>
@@ -28,11 +33,17 @@
       <br>
 
       <ul>
+
         {{#each burgers}}
+
           {{#if devoured}}
+
             {{> burgers/burger-block }}
+
           {{/if}}
+
         {{/each}}
+
       </ul>
     
     </div>
@@ -54,19 +65,11 @@
 
         <div class="form-group">
 
-							{{!-- <label for="category">Select Customer:</label> --}}
-
 							<select class="custom-select" id="customer"></select>
 
 				</div>
 
         <div class="form-group">
-
-          <div id="burger-label">
-          
-            {{!-- <label for="burger">Burger Name:</label> --}}
-
-          </div>
 
           <input type="text" id="burger" name="burger_name">
 
@@ -104,7 +107,7 @@
     </div>
     {{!-- end of mainButton col div --}}
     
-    <div class="col-4" id="addCustomer">
+    <div class="col-4" id="addCustomerBurger">
 
       <a class="btn btn-light" href="/customer">Manage Customers</a>
 
