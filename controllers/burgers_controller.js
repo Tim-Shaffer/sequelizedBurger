@@ -29,6 +29,8 @@ module.exports = function(app) {
         Burgers: dbBurger
       };
 
+      console.log(JSON.stringify(hbsObject));
+
       // call the index handlebar to render the selected Object 
       res.render("cust_burger", hbsObject);
 
