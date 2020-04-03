@@ -1,7 +1,3 @@
-// =============================================================
-// Dependencies
-// =============================================================
-
 // Require the models
 var db = require("../models");
 
@@ -17,8 +13,8 @@ module.exports = function(app) {
           ['cust_name', 'ASC'],
           ['id', 'DESC'],
         ],
-      })
-      .then(function(dbCustomer) {
+      }  
+    ).then(function(dbCustomer) {
 
       // create an Object to hold all the returned rows
       var hbsObject = {
@@ -37,8 +33,9 @@ module.exports = function(app) {
   app.post("/customer", function(req, res) {
 
     db.Customer.create({
-      cust_name: req.body.cust_name
-    }).then(function(dbCustomer) {
+        cust_name: req.body.cust_name
+      }
+    ).then(function(dbCustomer) {
 
       // respond to the posting route with the ID of the new Customer
       res.json(dbCustomer);
@@ -47,24 +44,37 @@ module.exports = function(app) {
 
   });
 
+  // establish the app delete method to call the Customer object destroy method 
   app.delete("/customer/:id", function(req, res) {
+
+    // delete the customer row and any associated burger rows
     db.Customer.destroy({
-      where: {
-        id: req.params.id
+        where: {
+          id: req.params.id
+        }
       }
-    }).then(function(dbCustomer) {
+    ).then(function(dbCustomer) {
+
+      // respond to the delete route with the remaining customers
       res.json(dbCustomer);
+
     });
+
   });
 
-  // GET route for getting all of the customers
+  // GET api route for getting all of the customers
   app.get("/api/customers", function(req, res) {
     
-    db.Customer.findAll({
-      include: [db.Burger]
-    }).then(function(dbCustomer) {
-      res.json(dbCustomer);
-    });
+    db.Customer.findAll(
+      {
+        include: [db.Burger]
+      }
+    ).then(function(dbCustomer) {
+      
+        // respond to the get route with the customers
+        res.json(dbCustomer);
+    
+      });
     
   });
 
