@@ -18,12 +18,13 @@ module.exports = function(app) {
 
       // create an Object to hold all the returned rows
       var hbsObject = {
-        customers: dbCustomer
+        Customers: dbCustomer
       };
 
-        // call the index handlebar to render the selected Object 
-        res.render("customer", hbsObject);
-        // res.json(hbsObject);
+
+      // call the index handlebar to render the selected Object 
+      res.render("customer", hbsObject);
+      // res.json(hbsObject);
 
     });
 

@@ -26,7 +26,7 @@ module.exports = function(app) {
 
       // create an Object to hold all the returned rows
       var hbsObject = {
-        burgers: dbBurger
+        Burgers: dbBurger
       };
 
       // call the index handlebar to render the selected Object 
@@ -53,7 +53,7 @@ module.exports = function(app) {
 
       // create an Object to hold all the returned rows
       var hbsObject = {
-        burgers: dbBurger
+        Burgers: dbBurger
       };
 
       // call the cust_burger handlebar to render the selected Object 
