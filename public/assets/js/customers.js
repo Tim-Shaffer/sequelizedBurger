@@ -24,10 +24,34 @@ $(document).ready(function() {
         
         // Reload the page to get the updated list
         location.reload();
+
       }
 
     );
     
+  });
+
+  // event handler for the click of the delete customer link
+  $(".delete-customer").on("click", function(event) {
+
+    var id = $(this).parent("td").parent("tr").attr("value");
+    console.log("ID:  " + id);
+
+    $.ajax({
+      url: "/customer/" + id,
+      method: "DELETE"
+    })
+    .then(
+
+      function() {
+        
+        // Reload the page to get the updated list
+        location.reload();
+
+      }
+
+    );
+
   });
 
 });

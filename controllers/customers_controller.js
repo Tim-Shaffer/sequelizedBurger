@@ -47,16 +47,26 @@ module.exports = function(app) {
 
   });
 
-     // GET route for getting all of the customers
-     app.get("/api/customers", function(req, res) {
-      
-      db.Customer.findAll({
-        include: [db.Burger]
-      }).then(function(dbCustomer) {
-        res.json(dbCustomer);
-      });
-      
+  app.delete("/customer/:id", function(req, res) {
+    db.Customer.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbCustomer) {
+      res.json(dbCustomer);
     });
+  });
+
+  // GET route for getting all of the customers
+  app.get("/api/customers", function(req, res) {
+    
+    db.Customer.findAll({
+      include: [db.Burger]
+    }).then(function(dbCustomer) {
+      res.json(dbCustomer);
+    });
+    
+  });
 
 };
   
