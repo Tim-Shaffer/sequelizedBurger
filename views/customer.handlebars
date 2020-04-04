@@ -24,14 +24,14 @@
               {{#each Customers}}
 
                 {{!-- {{> customers/customer-block}} --}}
-                <tr value="{{this.id}}">
+                <tr value="{{id}}">
 
-                <td> {{this.cust_name}} </td>
+                <td> {{cust_name}} </td>
 
-                {{#if this.Burgers}} 
+                {{#if Burgers}} 
 
                 {{!-- display the number of burgers for each customer as the length of that customers burger array --}}
-                <td>{{this.Burgers.length}}</td>
+                <td>{{Burgers.length}}</td>
 
                 {{else}}
 
@@ -40,7 +40,7 @@
 
                 {{/if}}
 
-                <td><a href="/burger/{{this.id}}">Order</a></td>
+                <td><a href="/burger/{{id}}">Order</a></td>
 
                 <td><a style='cursor:pointer;color:red' class='delete-customer'>Delete Customer</a></td>
               
