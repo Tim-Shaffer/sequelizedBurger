@@ -23,28 +23,7 @@
 
               {{#each Customers}}
 
-                {{!-- {{> customers/customer-block}} --}}
-                <tr value="{{id}}">
-
-                <td> {{cust_name}} </td>
-
-                {{#if Burgers}} 
-
-                {{!-- display the number of burgers for each customer as the length of that customers burger array --}}
-                <td>{{Burgers.length}}</td>
-
-                {{else}}
-
-                {{!-- no burgers are associated so the count is '0' --}}
-                <td>0</td>
-
-                {{/if}}
-
-                <td><a href="/burger/{{id}}">Order</a></td>
-
-                <td><a style='cursor:pointer;color:red' class='delete-customer'>Delete Customer</a></td>
-              
-                </tr>
+                {{> customers/customer-block}}
                   
               {{/each}}
 

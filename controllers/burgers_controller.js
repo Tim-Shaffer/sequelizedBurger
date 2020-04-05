@@ -24,15 +24,22 @@ module.exports = function(app) {
     }
     ).then(function(dbBurger) {
 
-      // create an Object to hold all the returned rows
-      var hbsObject = {
-        Burgers: dbBurger
+      // trying to correct the Heroku issue by changing the creation of the array to be passed to the handlebars object
+      var burgerArray = [];
+      for (i=0; i < dbBurger.length; i++) {
+        burgerArray.push({"id": dbBurger[i].id, "burger_name": dbBurger[i].burger_name, "devoured": dbBurger[i].devoured, "CustomerId": dbBurger[i].CustomerId,
+        "Customer": {"id": dbBurger[i].Customer.id, "cust_name": dbBurger[i].Customer.cust_name}})
       };
 
-      console.log(JSON.stringify(hbsObject));
+      // create an Object to hold all the returned rows
+      var hbsObject = {
+        // Burgers: dbBurger
+        Burgers: burgerArray
+      };
 
       // call the index handlebar to render the selected Object 
       res.render("cust_burger", hbsObject);
+      // res.render("cust_burger", dbBurger);
 
     });
 
@@ -53,9 +60,17 @@ module.exports = function(app) {
     }
     ).then(function(dbBurger) {
 
+      // trying to correct the Heroku issue by changing the creation of the array to be passed to the handlebars object
+      var burgerArray = [];
+      for (i=0; i < dbBurger.length; i++) {
+        burgerArray.push({"id": dbBurger[i].id, "burger_name": dbBurger[i].burger_name, "devoured": dbBurger[i].devoured, "CustomerId": dbBurger[i].CustomerId,
+        "Customer": {"id": dbBurger[i].Customer.id, "cust_name": dbBurger[i].Customer.cust_name}})
+      };
+
       // create an Object to hold all the returned rows
       var hbsObject = {
-        Burgers: dbBurger
+        // Burgers: dbBurger
+        Burgers: burgerArray
       };
 
       // call the cust_burger handlebar to render the selected Object 

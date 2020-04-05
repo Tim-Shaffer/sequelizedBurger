@@ -16,9 +16,26 @@ module.exports = function(app) {
       }  
     ).then(function(dbCustomer) {
 
+      // console.log(JSON.stringify(dbCustomer));
+
+      // trying to correct the Heroku issue by changing the creation of the array to be passed to the handlebars object
+      var customerArray = [];
+      for (i=0; i < dbCustomer.length; i++) {
+        var burgerArray = [];
+        for (j=0; j < dbCustomer[i].Burgers.length; j++) {
+          burgerArray.push({"id": dbCustomer[i].Burgers[j].id, 
+                            "burger_name": dbCustomer[i].Burgers[j].burger_name, 
+                            "devoured": dbCustomer[i].Burgers[j].devoured, 
+                            "CustomerId": dbCustomer[i].Burgers[j].CustomerId
+                            });
+        };
+        customerArray.push({"id": dbCustomer[i].id, "cust_name": dbCustomer[i].cust_name, "Burgers": burgerArray })
+      };
+
       // create an Object to hold all the returned rows
       var hbsObject = {
-        Customers: dbCustomer
+        // Customers: dbCustomer
+        Customers: customerArray
       };
 
 
